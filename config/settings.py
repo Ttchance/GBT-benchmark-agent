@@ -66,7 +66,7 @@ LLM_CONFIG = {
 }
 
 # ─────────────────────────────────────────
-# Azure OpenAI 配置（导师提供）
+# Azure OpenAI 配置
 # ─────────────────────────────────────────
 AZURE_LLM_CONFIG = {
     "azure_endpoint": _env_str("AZURE_OPENAI_ENDPOINT"),

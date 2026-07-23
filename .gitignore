@@ -157,6 +157,13 @@ ENV/
 env.bak/
 venv.bak/
 
+# Local OS and experiment artifacts
+.DS_Store
+logs/
+outputs/
+reports/output/
+data/chroma_gbt_kb/
+
 # Spyder project settings
 .spyderproject
 .spyproject

@@ -2887,13 +2887,13 @@ def parse_args():
     parser = argparse.ArgumentParser(description="GB/T 反例审查评测脚本")
     parser.add_argument(
         "--input", "-i",
-        default="/Users/wangtao/study/code/Project/GBT_parse/data/data_test_C.2.1/GBT_test.json",
-        help="输入 GBT_test.json 路径",
+        default="data/GBT_Data_fanli_10to17/GBT_test_balanced_00.json",
+        help="输入 GBT_test.json 路径（默认使用仓库内第一个 benchmark shard）",
     )
     parser.add_argument(
         "--output", "-o",
-        default="/Users/wangtao/study/code/Project/GBT_parse/output/eval_result.json",
-        help="评测结果输出路径（默认 output/eval_result.json）",
+        default="outputs/eval_result.json",
+        help="评测结果输出路径（默认 outputs/eval_result.json）",
     )
     parser.add_argument(
         "--backend", "-b",
