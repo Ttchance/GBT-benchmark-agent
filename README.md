@@ -196,10 +196,3 @@ treated separately from offline unit tests.
 - Use identical benchmark shards and agent-module switches for paired runs.
 - LLM provider updates may introduce nondeterminism even with fixed local code.
 
-## Anonymous-Review Notice
-
-Please do not add author names, affiliations, personal email addresses, local
-absolute paths, repository-owner identifiers, acknowledgements, or links to
-non-anonymous materials while this artifact is under double-blind review. A
-public citation, license, and maintainer information can be added after the
-review process permits de-anonymization.
