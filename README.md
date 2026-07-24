@@ -3,8 +3,8 @@
 This repository provides an anonymized research artifact for evaluating large
 language models on automated review of Chinese GB/T standard documents. It
 contains a counterexample-based benchmark, an LLM evaluation pipeline, optional
-agentic and retrieval-augmented review modes, and utilities for constructing
-additional counterexamples from source documents.
+agentic review modes, and utilities for constructing additional counterexamples
+from source documents.
 
 This artifact is released for double-blind peer review. Identifying information,
 including author names, affiliations, contact details, and links to non-anonymous
@@ -29,16 +29,14 @@ The evaluation supports two principal settings:
 - **Agentic review:** direct review, dimension specialists, error-type agents,
   and rule-based local scanners generate and consolidate candidate findings.
 
-An optional RAG component uses ChromaDB and local Ollama embeddings to retrieve
-review rules. Each agentic component can also be disabled independently for
-ablation experiments.
+Each agentic component can be disabled independently for ablation experiments.
 
 ## Repository Structure
 
 ```text
 .
 ├── config/                  # Environment-based runtime configuration
-├── core/                    # LLM clients, parsing, RAG, and counterexamples
+├── core/                    # LLM clients, parsing, and counterexamples
 ├── data/
 │   └── GBT_Data_fanli_10to17/
 │       ├── GBT_test_balanced_00.json
@@ -71,15 +69,9 @@ Optional dependencies:
 # Unit tests
 python -m pip install pytest
 
-# Retrieval-augmented review
-python -m pip install chromadb
-
 # Optional PDF parsing backend
 python -m pip install docling
 ```
-
-Ollama is additionally required when RAG is enabled. The default embedding model
-is `bge-m3:latest`.
 
 ## Configuration
 
@@ -151,40 +143,6 @@ The following switches support component ablations:
 ```
 
 Run `python main.py --help` for the complete command-line interface.
-
-## Retrieval-Augmented Review
-
-RAG is optional and disabled by default. To enable it, start Ollama, download an
-embedding model, prepare a JSONL rule file, and run:
-
-```bash
-ollama pull bge-m3
-
-python main.py \
-  --input data/GBT_Data_fanli_10to17/GBT_test_balanced_00.json \
-  --output outputs/rag_00.json \
-  --backend proxy \
-  --use-rag \
-  --rag-seed path/to/review_rules.jsonl
-```
-
-Each JSONL record should have the following form:
-
-```json
-{
-  "id": "rule-001",
-  "text": "Text of the review rule.",
-  "metadata": {
-    "dimension": "C2.1",
-    "error_type": "E-S-01",
-    "title": "Rule title",
-    "source": "rule source"
-  }
-}
-```
-
-The local ChromaDB index is created on first use and should not be committed to
-the artifact repository.
 
 ## Output and Metrics
 
